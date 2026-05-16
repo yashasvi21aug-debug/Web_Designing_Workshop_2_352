@@ -1,18 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DOM Manipulation Experiment</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitLife</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 id="heading">Welcome to JavaScript DOM</h1>
-    <input type="text" id="inputText" placeholder="Enter your message">
-    <br><br>
-    <button id="changeTextBtn">Change Heading</button>
-    <button id="colorBtn">Change Background</button>
-    <button id="fontBtn">Change Font Size</button>
-    <button id="toggleBtn">Show/Hide Paragraph</button>
-    <button id="resetBtn">Reset</button>
-    <p id="para">This is a sample paragraph.</p>
-    <script src="script.js"></script>
+
+<body class="bg-gray-100">
+
+    <header class="bg-slate-800 text-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center p-4">
+
+         
+            <h1 class="text-2xl font-bold">FitLife</h1>
+
+            
+            <nav class="mt-3 md:mt-0">
+                <ul class="flex gap-4 text-sm">
+                    <li><a href="#" class="hover:text-yellow-300">Home</a></li>
+                    <li><a href="#" class="hover:text-yellow-300">Programs</a></li>
+                    <li><a href="#" class="hover:text-yellow-300">Trainers</a></li>
+                    <li><a href="#" class="hover:text-yellow-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-r from-blue-300 to-purple-400 text-white text-center py-20 px-4">
+
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            Transform Your Body & Mind
+        </h2>
+
+        <p class="text-sm md:text-lg mb-6">
+            Join FitLife today and achieve your fitness goals with expert trainers.
+        </p>
+
+        <button class="bg-white text-black px-6 py-2 rounded hover:bg-gray-200">
+            Join Now
+        </button>
+    </section>
+
+    <section class="py-12 px-6">
+
+        <h2 class="text-3xl font-bold text-center mb-10">
+            Our Programs
+        </h2>
+
+       
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h3 class="text-xl font-bold text-red-500 mb-3">
+                    Weight Training
+                </h3>
+
+                <p class="text-gray-600">
+                    Build strength and muscle with guided weight training programs.
+                </p>
+            </div>
+
+        
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h3 class="text-xl font-bold text-red-500 mb-3">
+                    Yoga Classes
+                </h3>
+
+                <p class="text-gray-600">
+                    Improve flexibility and mental wellness through yoga sessions.
+                </p>
+            </div>
+
+         
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h3 class="text-xl font-bold text-red-500 mb-3">
+                    Diet Plans
+                </h3>
+
+                <p class="text-gray-600">
+                    Personalized diet plans to complement your fitness routine.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-blue-300 to-purple-400 text-white text-center py-6">
+
+        <p>© 2025 FitLife | All Rights Reserved</p>
+
+        <p class="mt-2">
+            Contact: info@fitlife.com
+        </p>
+
+    </footer>
+
 </body>
 </html>
