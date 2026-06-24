@@ -1,95 +1,40 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState("");
-  const [users, setUsers] = useState([]);
-  const validateForm = () => {
-    let newErrors = {};
-    if (name.trim() === "") {
-      newErrors.name = "Name is required";
-    }
-    if (email.trim() === "") {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Invalid email";
-    }
-    if (password.trim() === "") {
-      newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const [numbers, setNumbers] = useState("");
+  const [sum, setSum] = useState(null);
+
+  const calculateSum = () => {
+    const arr = numbers
+      .split(",")
+      .map((num) => Number(num.trim()))
+      .filter((num) => !isNaN(num));
+
+    const total = arr.reduce((acc, curr) => acc + curr, 0);
+    setSum(total);
   };
 
-  const handleSubmit = (e) => {e.preventDefault();
-    if (validateForm()) {
-      const newUser = {
-        name,
-        email,
-      };
-      setUsers([...users, newUser]);
-      setSuccess("Registration Successful!");
-      setName("");
-      setEmail("");
-      setPassword("");
-      setErrors({});
-    } else {
-      setSuccess("");
-    }
-  };
   return (
     <div className="container">
-      <div className="form-box">
-        <h1>Registration Form</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
+      <div className="card">
+        <h1>Sum of N Numbers</h1>
 
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
+        <p>Enter numbers separated by commas</p>
 
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
+        <input
+          type="text"
+          placeholder="Example: 10, 20, 30, 40"
+          value={numbers}
+          onChange={(e) => setNumbers(e.target.value)}
+        />
 
-          <button type="submit">Register</button>
+        <button onClick={calculateSum}>Calculate Sum</button>
 
-        </form>
-        {success && <p className="success">{success}</p>}
-        {users.length > 0 && (
-          <div className="users-box">
-            <h2>Registered Users</h2>
-            <ul>
-              {users.map((user, index) => (
-                <li key={index}>
-                  {user.name} - {user.email}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {sum !== null && <h2>Sum = {sum}</h2>}
       </div>
     </div>
   );
 }
+
 export default App;
